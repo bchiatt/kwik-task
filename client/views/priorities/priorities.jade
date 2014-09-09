@@ -1,0 +1,32 @@
+h3 {{title}}
+
+.row
+  .col-xs-3
+    form(role='form', novalidate, name='priorityForm')
+      .form-group
+        label(for='name') Name
+        input.form-control#name(required, ng-minlength='3', ng-model='priority.name', type='text', name='name', autofocus)
+      .form-group
+        label(for='color') Color
+        input.form-control#color(required, ng-model='priority.color', type='color', name='color')
+      button.btn.btn-primary(type='submit', ng-show='priorityForm.$valid', ng-click='add()') Add Priority
+  .col-xs-3
+    .backdrop(ng-show='priorities[0]')
+      .radio
+        label
+          input(name='sort', type='radio', ng-model='sort', value='name')
+          span Ascending
+      .radio
+        label
+          input(name='sort', type='radio', ng-model='sort', value='-name')
+          span Descending
+      table.table.table-howver.table-bordered
+        thead
+          tr
+            th Name
+            th Color
+        tbody
+          tr(ng-repeat='p in priorities | orderBy:sort')
+            td {{p.name}}
+            td(ng-style='{"background-color":p.color}') {{p.color}}
+  .col-xs-3

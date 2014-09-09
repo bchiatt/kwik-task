@@ -1,0 +1,46 @@
+h3 {{title}}
+
+.row
+  .col-xs-3
+    form(role='form', novalidate, name='taskForm')
+      .form-group
+        label(for='name') Name
+        input.form-control#name(required, ng-minlength='3', ng-model='task.name', type='text', name='name', autofocus)
+      .form-group
+        label(for='due') Due
+        input.form-control#due(required, ng-model='task.due', type='date', name='due')
+      .form-group
+        label(for='priority') Priority
+        select.form-control#priority(required, ng-model='task.priority', ng-options='p._id as p.name for p in priorities | orderBy:"name"',  name='priority')
+          option(value='') Select Priority
+      button.btn.btn-primary(type='submit', ng-show='taskForm.$valid', ng-click='add()') Add Task
+  .col-xs-3
+    .backdrop(ng-show='tasks[0]')
+      //.radio
+        label
+          input(name='sort', type='radio', ng-model='sort', value='name')
+          span Ascending
+      //.radio
+        label
+          input(name='sort', type='radio', ng-model='sort', value='-name')
+          span Descending
+      table#tasks.table.table-howver.table-bordered
+        thead
+          tr
+            th Done
+            th Name &nbsp
+              a(href='', ng-click='sort = "name"'): span.i.fa.fa-angle-down &nbsp
+              a(href='', ng-click='sort = "-name"'): span.i.fa.fa-angle-up
+            th Due &nbsp
+              a(href='', ng-click='sort = "due"'): span.i.fa.fa-angle-down &nbsp
+              a(href='', ng-click='sort = "-due"'): span.i.fa.fa-angle-up
+            th Priority &nbsp
+              a(href='', ng-click='sort = "priority.name"'): span.i.fa.fa-angle-down &nbsp
+              a(href='', ng-click='sort = "-priority.name"'): span.i.fa.fa-angle-up
+        tbody
+          tr(ng-repeat='t in tasks | orderBy:sort', ng-class='{complete: t.isComplete}')
+            td: input(type='checkbox', ng-model='t.isComplete')
+            td {{t.name}}
+            td {{t.due | date:'MMM dd, yyyy'}}
+            td(ng-style='{"background-color":t.priority.color}') {{t.priority.name}}
+  .col-xs-3

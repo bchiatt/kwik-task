@@ -1,7 +1,7 @@
 (function(){
   'use strict';
 
-  angular.module('mean-template')
+  angular.module('kwik-task')
   .factory('Home', ['$http', function($http){
 
     function getMessage(){
