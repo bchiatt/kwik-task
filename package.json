@@ -1,17 +1,17 @@
 {
-  "name": "mean-template",
+  "name": "kwik-task",
   "version": "0.0.0",
-  "description": "The MEAN Template",
+  "description": "like a kwik-mart for your tasks",
   "repository": {
     "type": "git",
-    "url": "https://github.com/chyld/mean-template"
+    "url": "https://github.com/bchiatt/kwik-task"
   },
-  "author": "Chyld Medford <chyld.medford@gmail.com>",
+  "author": "Brian Hiatt <brian.hiatt41@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/chyld/mean-template/issues"
+    "url": "https://github.com/bchiatt/kwik-task/issues"
   },
-  "homepage": "https://github.com/chyld/mean-template",
+  "homepage": "https://github.com/bchiatt/kwik-task",
   "dependencies": {
     "async": "^0.9.0",
     "bcrypt": "^0.8.0",
